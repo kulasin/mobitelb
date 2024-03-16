@@ -90,7 +90,7 @@
              
             @endif </h1>
 	                    
-	                    <p class="m-0"><small><img width="100" src="{{ asset('../resources/img/brands/' . $product->brand . '.png') }}"></small><br></p>{!! $product->description !!}
+	                    <p class="m-0"><small><img width="100" src="{{ asset('/resources/img/brands/' . $product->brand . '.png') }}"></small><br></p>{!! $product->description !!}
 	                    <div class="prod_options">
 						<div class="row">
     <label class="col-xl-5 col-lg-5 col-md-6 col-6 pt-0"><strong>Boja</strong></label>
@@ -278,7 +278,7 @@
             @endif
 							
 						</figure>
-						<small><img style="display:unset!important; width:70px; margin-top:-35px; margin-bottom:-20px" src="{{ asset('../resources/img/brands/' . $product->brand . '.png') }}"></small>
+						<small><img style="display:unset!important; width:70px; margin-top:-35px; margin-bottom:-20px" src="{{ asset('/resources/img/brands/' . $product->brand . '.png') }}"></small>
 						<a href="{{ route('product.show', ['id' => $product->id]) }}">
 							<h3>{{ $product->name }}</h3>
 						</a>

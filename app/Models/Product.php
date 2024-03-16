@@ -37,15 +37,22 @@ class Product extends Model
 
 public function getFirstImageAttribute()
 {
-    $images = $this->getImagesAttribute($this->attributes['images']);
+    // Assuming $this->attributes['images'] contains the string of image names separated by commas
+    $imagesString = $this->attributes['images'];
 
-    if (empty($images) || (count($images) === 1 && $images[0] === "")) {
-        // If 'images' array is empty or contains only an empty string, return the placeholder image
-        return asset('../resources/img/uploads/placeholder.png');
+    // Split the string into an array of image names
+    $images = explode(',', $imagesString);
+
+    // Check if there is at least one image name in the array
+    if (!empty($images) && $images[0] !== "") {
+        // Return the first image, prefixed with the path to the image directory
+        return asset('/resources/img/uploads/' . $images[0]);
+    } else {
+        // If there are no valid image names, return the placeholder image
+        return asset('/resources/img/uploads/placeholder.png');
     }
-
-    return asset('../resources/img/uploads/' . $images[0]);
 }
+
 
 
     // Add any additional relationships here if needed

@@ -11,7 +11,7 @@ const $owlCarousel = $("#carousel-home .owl-carousel").owlCarousel({
   nav: true,
     autoplay : 3000,
     
-     navText: ["<img class='strelice prije' src='../resources/img/previous.png'>","<img class='strelice poslije' src='../resources/img/next2.png'>"],
+     navText: ["<img class='strelice prije' src='/resources/img/previous.png'>","<img class='strelice poslije' src='/resources/img/next2.png'>"],
 stopOnHover : false,
   dots:true,
 	responsive:{

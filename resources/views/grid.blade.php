@@ -88,7 +88,7 @@
             @endif
 							
 						</figure>
-						<small><img style="display:unset!important; width:70px; margin-top:-35px; margin-bottom:-20px" src="{{ asset('../resources/img/brands/' . $product->brand . '.png') }}"></small>
+						<small><img style="display:unset!important; width:70px; margin-top:-35px; margin-bottom:-20px" src="{{ asset('/resources/img/brands/' . $product->brand . '.png') }}"></small>
 						<a href="{{ route('product.show', ['id' => $product->id]) }}">
 							<h3>{{ $product->name }}</h3>
 						</a>

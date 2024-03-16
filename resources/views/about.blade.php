@@ -13,24 +13,24 @@
                     <h2>Najprodavaniji proizvodi</h2>
                     <p class="lead">Pronađite najbolje proizvode u našoj ponudi.</p>
                     <p>Imamo širok izbor mobilnih telefona, laptopa, igara i drugih tehnoloških gadgeta. Naši proizvodi su visokog kvaliteta i dolaze od poznatih svjetskih brendova. Obratite nam se za najnovije modele i najbolje cijene.</p>
-                    <img src="{{ asset('../resources/img/arrow_about.png') }}" alt="" class="arrow_1">
+                    <img src="{{ asset('/resources/img/arrow_about.png') }}" alt="" class="arrow_1">
                 </div>
             </div>
             <div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
-                <img src="{{ asset('../resources/img/about_1.svg') }}" alt="" class="img-fluid" width="350" height="268">
+                <img src="{{ asset('/resources/img/about_1.svg') }}" alt="" class="img-fluid" width="350" height="268">
             </div>
         </div>
         <!-- /row -->
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-5 pr-lg-5 text-center d-none d-lg-block">
-                <img src="{{ asset('../resources/img/about_2.svg') }}" alt="" class="img-fluid" width="350" height="268">
+                <img src="{{ asset('/resources/img/about_2.svg') }}" alt="" class="img-fluid" width="350" height="268">
             </div>
             <div class="col-lg-5">
                 <div class="box_about">
                     <h2>Najpoznatije marke</h2>
                     <p class="lead">Pronađite proizvode poznatih svjetskih brendova.</p>
                     <p>Saradjujemo s vodećim proizvođačima mobilnih telefona, laptopa i igara. Naša ponuda obuhvata proizvode renomiranih kompanija koje su poznate po kvalitetu, pouzdanosti i inovativnosti. Bez obzira na vaše potrebe, kod nas ćete pronaći proizvode koji odgovaraju vašem ukusu i stilu.</p>
-                    <img src="{{ asset('../resources/img/arrow_about.png') }}" alt="" class="arrow_2">
+                    <img src="{{ asset('/resources/img/arrow_about.png') }}" alt="" class="arrow_2">
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
-                <img src="{{ asset('../resources/img/about_3.svg') }}" alt="" class="img-fluid" width="350" height="316">
+                <img src="{{ asset('/resources/img/about_3.svg') }}" alt="" class="img-fluid" width="350" height="316">
             </div>
         </div>
         <!-- /row -->

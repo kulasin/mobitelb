@@ -320,7 +320,7 @@
 			<!--/categories_grid-->
 		</div>
       
-		<div class="featured lazy" data-bg="url(/resources/img/front/front1.jpg)">
+		<div class="featured lazy" data-bg="url({{ asset('/resources/img/front/front1.jpg') }})">
 			<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
 				<div class="container margin_60">
 					<div class="row justify-content-center justify-content-md-start">
