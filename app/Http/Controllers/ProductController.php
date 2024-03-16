@@ -200,7 +200,7 @@ $products->appends($paginationData);
             if ($image->isValid()) {
                 // Your file upload logic here
                 $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('/resources/img/uploads'), $imageName);
+                $image->move(public_path('resources/img/uploads'), $imageName);
                 $uploadedImages[] = $imageName;
             } else {
                 // Log or print any errors
@@ -286,7 +286,7 @@ public function update(Request $request, $id)
             if ($image->isValid()) {
                 // Your file upload logic here
                 $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('/resources/img/uploads'), $imageName);
+                $image->move(public_path('resources/img/uploads'), $imageName);
                 $uploadedImages[] = $imageName;
             } else {
                 // Log or print any errors
