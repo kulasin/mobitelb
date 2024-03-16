@@ -198,6 +198,26 @@
   position: relative;
   padding-bottom: 100%;
 }
+.bonus-header {
+
+    background: linear-gradient(180deg, rgba(186, 115, 33, 1) 0%, rgba(236, 200, 90, 1) 50%, rgba(186, 115, 33, 1) 100%) !important;
+    border-bottom: 1px solid transparent !important;
+    color: black;
+    display:block;
+    text-align:center;
+    font-size:1rem;
+    padding:2px;
+
+}
+
+.kamion {
+
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: -29px;
+    margin-top: -4px;
+}
 
      
     
@@ -207,7 +227,13 @@
 	<div id="page">
 		
 	<header class="version_2">
-		<div class="layer"></div><!-- Mobile menu overlay mask -->
+		<div class="bonus-header"><strong><script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/amfpjnmb.json"
+    trigger="loop"
+    delay="2000"
+   class="kamion">
+</lord-icon><span style="color:red; font-weight:900">B E S P L A T N A</span>   DOSTAVA<strong> <span style="font-size:0.7rem">za prvih 500 narudžbi!</span></div><!-- Mobile menu overlay mask -->
 		<div class="main_header">
 			<div class="container">
 				<div class="row small-gutters">
