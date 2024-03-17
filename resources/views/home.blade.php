@@ -13,13 +13,96 @@
                                         <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
 										LAPTOPI
 										</p>
-										<h2 class="owl-slide-animated owl-slide-title">MacBook  Pro Apple <br>14-inch</h2>
+										<h2 class="owl-slide-animated owl-slide-title">Apple MacBook Air <br>15-inch</h2>
 										<p class="owl-slide-animated owl-slide-subtitle">
 											
-                                            M2 2023 <br>  16 512GB SSD
+										M2 2022 8GB RAM
 										</p>
-                                     <h3 class="owl-slide-animated owl-slide-title mt-2">4099.99 km</h3>
-										<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="{{ route('product.show', '5') }}" role="button">POGLEDAJ</a></div>
+                                      
+                                          <div class="row  mt-2">
+                                        <h3 class="owl-slide-animated owl-slide-title" >2399.99 KM </h3>
+                                      
+                                      
+										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '1127') }}" role="button">GOLD</a></div> 
+                                              
+                                        <div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '1127') }}" role="button">BLACK</a></div> 
+                                        </div>
+									</div>
+                                    
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/iphone.jpg') }});">
+					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+						<div class="container">
+                            <div class="row justify-content-center justify-content-md-start">
+								<div class="col-lg-6 static">
+									<div class="slide-text white">
+                                        <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
+										IPHONE
+										</p>
+										<h2 class="owl-slide-animated owl-slide-title">UPOZNAJ <br>novu seriju</h2>
+										<p class="owl-slide-animated owl-slide-subtitle">
+											
+										
+										</p>
+										<br>
+                                      
+                                
+										
+										<div class="row mt-2">
+                                        <h3 class="owl-slide-animated owl-slide-title"  >1499.99 KM</h3>
+										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '4') }}" role="button">IPHONE 15</a></div> 
+                                            </div> 
+                                          <div class="row  mt-2">
+                                        <h3 class="owl-slide-animated owl-slide-title" >od 1949.99</h3>
+                                      
+                                      
+										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">IPHONE 15 PRO</a></div> 
+                                              
+                                        <div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">IPHONE 15 PRO MAX</a></div> 
+                                        </div>
+									</div>
+                                    
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/samsung.jpg') }});">
+					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+						<div class="container">
+                            <div class="row justify-content-center justify-content-md-start">
+								<div class="col-lg-6 static">
+									<div class="slide-text white">
+                                        <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
+										SAMSUNG
+										</p>
+										<h2 class="owl-slide-animated owl-slide-title">SA <br>umjetnom inteligencijom</h2>
+										<p class="owl-slide-animated owl-slide-subtitle">
+											
+										
+										</p>
+										<br>
+                                      
+                                
+										
+										<div class="row mt-2">
+                                        <h3 class="owl-slide-animated owl-slide-title"  >1320 KM</h3>
+										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '4') }}" role="button">GALAXY S24</a></div> 
+                                            </div> 
+                                          <div class="row  mt-2">
+                                        <h3 class="owl-slide-animated owl-slide-title" >od 1949.99 KM</h3>
+                                      
+                                      
+										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">GALAXY S24 PLUS</a></div> 
+                                              
+                                        <div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">GALAXY S24 ULTRA</a></div> 
+                                        </div>
 									</div>
                                     
 								</div>
@@ -30,7 +113,7 @@
 				</div>
                 
 			<!--/owl-slide-->
-				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/11.png') }});">
+				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/12.jpg') }});">
 					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
 						<div class="container">
 							<div class="row justify-content-center justify-content-md-end">
@@ -39,13 +122,13 @@
                                        <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
 										IGRAČKE KONZOLE
 										</p>
-										<h2 class="owl-slide-animated owl-slide-title mt-3">Playstation 5<br><br>Disc <br>edition</h2>
+										<h2 class="owl-slide-animated owl-slide-title mt-3">Playstation 5<br><br>SLIM <br>D Chassic</h2>
 										<p class="owl-slide-animated owl-slide-subtitle mt-3">
 											
-                                            825GB <br>God of War Edition
+                                            Digital i <br>Disc Edition
 										</p>
-										<h3 class="owl-slide-animated owl-slide-title mt-2">1049.99 km</h3>
-										<div  class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="{{ route('product.show', '83') }}" role="button">POGLEDAJ</a></div>
+										<h3 class="owl-slide-animated owl-slide-title mt-2">od 1099 km</h3>
+										<div  class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="{{ route('product.show', '1001') }}" role="button">POGLEDAJ</a></div>
                                         
 									</div>
 								</div>
@@ -54,40 +137,7 @@
 					</div>
 				</div>
 				<!--/owl-slide-->
-				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/22.png') }});">
-					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
-						<div class="container">
-                            <div class="row justify-content-center justify-content-md-start">
-								<div class="col-lg-6 static">
-									<div class="slide-text white">
-                                        <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
-										TABLETI
-										</p>
-										<h2 class="owl-slide-animated owl-slide-title">Apple iPad Pro <br>11-inch</h2>
-										<p class="owl-slide-animated owl-slide-subtitle">
-											
-                                             4th Gen već <br> od 1.77O KM
-										</p>
-                                        <div class="row mt-2">
-                                        <h3 class="owl-slide-animated owl-slide-title"  >128GB </h3>
-										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '4') }}" role="button">SILVER</a></div> 
-                                            </div> 
-                                          <div class="row  mt-2">
-                                        <h3 class="owl-slide-animated owl-slide-title" >256GB </h3>
-                                      
-                                      
-										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">SPACE GRAY</a></div> 
-                                              
-                                        <div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">SILVER</a></div> 
-                                        </div>
-									</div>
-                                    
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
+				
 			
 				<!--/owl-slide-->
 				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/44.png') }});">
