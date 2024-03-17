@@ -574,10 +574,11 @@ echo $monthNamesBosnianAbbrev[date('n', strtotime($post->created_at))];
 			</div>
 			<!-- /row -->
 		</div>
-		<div class="popup_wrapper">
+		
+		<!--<div class="popup_wrapper" style="display:none">
 		<div class="popup_content" style="top:65%!important">
 			<span class="popup_close">Zatvori</span>
 			<a href="{{ route('products.filter', ['category[]' => 'Oprema za mobitele']) }}"><img class="img-fluid" src="{{ asset('/resources/img/banner_popup2.png') }}" alt="" width="500" height="500"></a>
 		</div>
-	</div>
+	</div> -->
 @endsection
