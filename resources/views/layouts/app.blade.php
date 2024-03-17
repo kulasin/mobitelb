@@ -215,7 +215,6 @@
     width: 30px;
     height: 30px;
     position: absolute;
-    margin-left: -29px;
     margin-top: -4px;
 }
 
@@ -228,12 +227,13 @@
 		
 	<header class="version_2">
 		<div class="bonus-header"><strong><script src="https://cdn.lordicon.com/lordicon.js"></script>
-<lord-icon
+        <span style="color:#c71f16; font-weight:900">B E S P L A T N A</span> <span style=" font-weight:700">DOSTAVA</span>  <strong> <span style="font-size:0.7rem">za prvih 500 narudžbi!</span><lord-icon
     src="https://cdn.lordicon.com/amfpjnmb.json"
     trigger="loop"
-    delay="2000"
-   class="kamion">
-</lord-icon><span style="color:red; font-weight:900">B E S P L A T N A</span>   DOSTAVA<strong> <span style="font-size:0.7rem">za prvih 500 narudžbi!</span></div><!-- Mobile menu overlay mask -->
+    delay="1000"
+    stroke="bold" class="kamion"
+    colors="primary:#121331,secondary:#e8b730,tertiary:#3a3347,quaternary:#c71f16,quinary:#646e78">
+</lord-icon></div><!-- Mobile menu overlay mask -->
 		<div class="main_header">
 			<div class="container">
 				<div class="row small-gutters">
