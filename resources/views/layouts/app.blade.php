@@ -207,6 +207,7 @@
     text-align:center;
     font-size:1rem;
     padding:2px;
+    margin-left:-30px;
 
 }
 
