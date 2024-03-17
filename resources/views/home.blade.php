@@ -13,10 +13,10 @@
                                         <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
 										LAPTOPI
 										</p>
-										<h2 class="owl-slide-animated owl-slide-title">Apple MacBook Air <br>15-inch</h2>
+										<h2 class="owl-slide-animated owl-slide-title">MacBook AIR<br>apple <br>15-inch</h2>
 										<p class="owl-slide-animated owl-slide-subtitle">
 											
-										M2 2022 8GB RAM
+										M2 2022 8GB RAM 256 SSD
 										</p>
                                       
                                           <div class="row  mt-2">
@@ -80,9 +80,9 @@
 								<div class="col-lg-6 static">
 									<div class="slide-text white">
                                         <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
-										SAMSUNG
+										SAMSUNG SA
 										</p>
-										<h2 class="owl-slide-animated owl-slide-title">SA <br>umjetnom inteligencijom</h2>
+										<h2 class="owl-slide-animated owl-slide-title"> umjetnom<br> inteligencijom</h2>
 										<p class="owl-slide-animated owl-slide-subtitle">
 											
 										
@@ -101,7 +101,7 @@
                                       
 										<div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">GALAXY S24 PLUS</a></div> 
                                               
-                                        <div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">GALAXY S24 ULTRA</a></div> 
+                                        <div class="owl-slide-animated owl-slide-cta"  style="width: unset!important"><a class="btn_1" href="{{ route('product.show', '14') }}" role="button">GALAXY S24</a></div> 
                                         </div>
 									</div>
                                     
@@ -122,7 +122,7 @@
                                        <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
 										IGRAČKE KONZOLE
 										</p>
-										<h2 class="owl-slide-animated owl-slide-title mt-3">Playstation 5<br><br>SLIM <br>D Chassic</h2>
+										<h2 class="owl-slide-animated owl-slide-title">Playstation 5<br><br>SLIM <br>D Chassic</h2>
 										<p class="owl-slide-animated owl-slide-subtitle mt-3">
 											
                                             Digital i <br>Disc Edition
@@ -140,23 +140,23 @@
 				
 			
 				<!--/owl-slide-->
-				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/44.png') }});">
+				<div class="owl-slide cover" style="background-image: url({{ asset('/resources/img/slides/dji.jpg') }});">
 					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
 						<div class="container">
 							<div class="row justify-content-center justify-content-md-end">
 								<div class="col-lg-6 static">
 									<div class="slide-text text-end white">
                                          <p class="owl-slide-animated owl-slide-subtitle" style="margin-bottom: 0">
-										TABLET UREĐAJI
+										DRONOVI
 										</p>
-										<h2 class="owl-slide-animated owl-slide-title">LENOVO<br>TAB P11 Plus</h2>
+										<h2 class="owl-slide-animated owl-slide-title">AKCIJA<br>DJI dronova</h2>
 										<p class="owl-slide-animated owl-slide-subtitle">
-								         50h baterije
+								         različitih veličina
                                             <br>
-                                           Sofisticiran dizajn
+                                           i performasni
                                             
 										</p>
-										<h3 class="owl-slide-animated owl-slide-title mt-2">649.99 km</h3>
+										<h3 class="owl-slide-animated owl-slide-title mt-2">od 649.99 km</h3>
 										<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="{{ route('product.show', '8894') }}" role="button">POGLEDAJ</a></div>
                                         
 									</div>
