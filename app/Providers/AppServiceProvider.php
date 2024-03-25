@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
                     $subtotal += $product->price * $cartItems[$product->id]['quantity'];
                 }
             
-                $total = $subtotal + 7.00; // Assuming shipping is always 7.00 KM
+                $total = $subtotal + 9.00; // Assuming shipping is always 7.00 KM
             
                 $view->with(compact('cartproducts', 'categories', 'cartItems', 'subtotal', 'total'));
             });

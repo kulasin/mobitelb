@@ -79,7 +79,7 @@
                     <ul>
                         <h5 class="text-white">Dostava</h5>
                         <li>
-                            <label class="container_radio">Standardna dostava (7KM)
+                            <label class="container_radio">Standardna dostava (9KM)
                                 
                                 <input type="radio" name="shipping" checked>
                                 <span class="checkmark"></span>
@@ -105,7 +105,7 @@
                         </ul>
                         <ul>
                             <li class="clearfix"><em><strong>Subtotal</strong></em> <span>{{ $subtotal }} KM</span></li>
-                            <li class="clearfix"><em><strong>Dostava</strong></em> <span>7 KM</span></li>
+                            <li class="clearfix"><em><strong>Dostava</strong></em> <span>9 KM</span></li>
                         </ul>
                         <div class="total clearfix">TOTAL <span>{{ $total }} KM</span></div>
                         <div class="form-group">

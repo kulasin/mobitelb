@@ -39,15 +39,16 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.s
 
 Route::get('/help', [InformationController::class, 'help'])->name('help');
 Route::get('/about', [InformationController::class, 'about'])->name('about');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/add/mobile', [CartController::class, 'addToCartMobile'])->name('cart.add.mobile');
+Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::post('cart/placeOrder', [CartController::class, 'placeOrder'])->name('order');
+Route::get('cart/confirm', [CartController::class, 'confirm'])->name('cart.confirm');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-    Route::post('/cart/add/mobile', [CartController::class, 'addToCartMobile'])->name('cart.add.mobile');
-    Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
-    Route::get('cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
-    Route::post('cart/placeOrder', [CartController::class, 'placeOrder'])->name('order');
-    Route::get('cart/confirm', [CartController::class, 'confirm'])->name('cart.confirm');
+   
     Route::get('/user/orders', [UserController::class, 'orderHistory'])->name('user.orders');
     Route::get('/user/orders/{orderId}', [UserController::class, 'orderDetails'])->name('user.order');
     Route::get('/user/account', [UserController::class, 'account'])->name('user.account');

@@ -23,7 +23,7 @@ class CartController extends Controller
             $subtotal += $product->price * $cartItems[$product->id]['quantity'];
         }
     
-        $total = $subtotal + 7.00; // Assuming shipping is always 7.00 KM
+        $total = $subtotal + 9.00; // Assuming shipping is always 8.00 KM
     
         return view('cart.index', compact('cartproducts', 'categories', 'cartItems', 'subtotal', 'total'));
     }
@@ -86,7 +86,7 @@ class CartController extends Controller
             $subtotal += $product->price * $cartItems[$product->id]['quantity'];
         }
     
-        $total = $subtotal + 7.00; // Assuming shipping is always 7.00 KM
+        $total = $subtotal + 9.00; // Assuming shipping is always 7.00 KM
     
         return view('cart.checkout', compact('cartproducts', 'categories', 'cartItems', 'subtotal', 'total'));
     }
