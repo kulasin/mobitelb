@@ -23,6 +23,6 @@ class OrderPlaced extends Mailable
 
     public function build()
     {
-        return $this->subject('New Order Notification')->text('emails.order.placed');
+        return $this->subject('New Order Notification')->text('order.placed');
     }
 }
