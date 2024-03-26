@@ -1,7 +1,5 @@
 Imate novu narudžbu!
 
-Detalji narudžbe:
-Order ID: {{ $order->id }}
-<!-- Include any other relevant order details here -->
+Za pregled iste otvorite link: https://mobitelba.ba/user/orders sa administratorskim pristupom!
 
 Hvala vam!
