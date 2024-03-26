@@ -2,7 +2,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+<form action="{{ route('order') }}" method="post">
+ 
     <div class="container margin_30">
         <div class="page_header">
             <div class="breadcrumbs">
@@ -25,41 +26,68 @@
                     <div class="tab-content checkout">
                         <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                             <div class="row no-gutters">
-                                <div class="col-12 form-group pr-1">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled>
-                                </div>
+                                @if(auth()->check())
+                                    <!-- If the user is logged in, display user information -->
+                                    <div class="col-12 form-group pr-1">
+                                        <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="{{ Auth::user()->address }}" disabled>
+                                    </div>
+                                    <div class="row" style="padding-right:0!important">
+                                        <div class="col-6 form-group">
+                                            <input type="text" class="form-control" value="{{ Auth::user()->zip }}" disabled>
+                                        </div>
+                                        <div class="col-6 form-group" style="padding-right:0!important">
+                                            <input type="text" class="form-control" value="{{ Auth::user()->city }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="{{ Auth::user()->phone }}" disabled>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn_1" style="width: 100%" id="editUserModalButton">Izmijenite podatke</button>
+                                    </div>
+                                @else
                                 
-                           
-                            <!-- /row -->
-                            <div class="form-group">
-                                <input type="text" class="form-control" value="{{ Auth::user()->address }}" disabled>
-                            </div> </div>
-                            <div class="row no-gutters">
-                            <div class="col-6 form-group pl-1">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->zip }}" disabled>
-                                </div>
-                                <div class="col-6 form-group pr-1">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->city }}" disabled>
-                                </div>
-                                
-                            </div>
-                            <!-- /row -->
-                            <div class="form-group">
-                                <input type="text" class="form-control" value="{{ Auth::user()->phone }}" disabled>
-                            </div>
-                            <div class="text-center">
-                                
-                                <button type="button" class="btn_1" style="width: 100%" id="editUserModalButton">Izmijenite podatke</button>
 
+    <div class="form-group">
+        <label class="text-white" for="name">Ime i prezime</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required oninvalid="this.setCustomValidity('Ime i prezime za dostavu obavezno!')" oninput="setCustomValidity('')">
+        <div class="help-block with-errors"></div>
+    </div>
+
+    <div class="form-group">
+        <label  class="text-white" for="address">Adresa</label>
+        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required oninvalid="this.setCustomValidity('Adresa za dostavu obavezna!')" oninput="setCustomValidity('')">
+    </div>
+
+    <div class="row" style="padding-right:0px">
+        <div class="form-group col-md-6">
+            <label class="text-white" for="postal_code">Poštanski broj</label>
+            <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ old('postal_code') }}" required oninvalid="this.setCustomValidity('Poštanski broj za dostavu obavezan!')" oninput="setCustomValidity('')">
+        </div>
+        <div class="form-group col-md-6"  style="padding-right:0px">
+            <label class="text-white" for="city">Grad</label>
+            <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required oninvalid="this.setCustomValidity('Grad za dostavu obavezan!')" oninput="setCustomValidity('')">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="text-white" for="phone">Telefon</label>
+        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required oninvalid="this.setCustomValidity('Vaš broj telefona je obavezan!')" oninput="setCustomValidity('')">
+    </div>
+
+
+
+                                @endif
                             </div>
                         </div>
-                        <!-- /tab_1 -->
-
-                        <!-- /tab_2 -->
                     </div>
                 </div>
                 <!-- /step -->
             </div>
+
 
             <!-- Step 2: Plaćanje i dostava -->
             <div class="col-lg-4 col-md-6">
@@ -79,7 +107,7 @@
                     <ul>
                         <h5 class="text-white">Dostava</h5>
                         <li>
-                            <label class="container_radio">Standardna dostava (9KM)
+                            <label class="container_radio">Standardna dostava (9 KM)
                                 
                                 <input type="radio" name="shipping" checked>
                                 <span class="checkmark"></span>
@@ -117,11 +145,10 @@
 
                         @if(count($cartproducts) > 0)
                         <!-- Update the form action and method based on your route and controller -->
-                        <form action="{{ route('order') }}" method="post">
+                      
                             @csrf
                             <button type="submit" class="btn_1 full-width">Završite narudžbu</button>
-                        </form>
-                        @endif
+                        </form>  @endif
                     </div>
                     <!-- /box_general -->
                 </div>
@@ -130,9 +157,9 @@
         </div>
         <!-- /row -->
     </div>
-
+</form>
 <!-- resources/views/cart/checkout.blade.php -->
-
+@if(auth()->check())
 <!-- Your existing HTML code for checkout.blade.php -->
 <!-- Modal for editing user information -->
 <div class="modal fade mt-3" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
@@ -164,25 +191,25 @@
                             <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                                 <div class="form-group">
                                     <label class="text-white" for="name">Ime i prezime</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}">
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}" required oninvalid="this.setCustomValidity('Ime i prezime za dostavu obavezno!')" oninput="setCustomValidity('')">
                                 </div>
                                 <div class="form-group">
                                     <label  class="text-white" for="address">Adresa</label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{ auth()->user()->address }}">
+                                    <input type="text" class="form-control" id="address" name="address" value="{{ auth()->user()->address }}" required oninvalid="this.setCustomValidity('Adresa za dostavu obavezna!')" oninput="setCustomValidity('')">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label  class="text-white" for="postal_code">Poštanski broj</label>
-                                        <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ auth()->user()->zip }}">
+                                        <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ auth()->user()->zip }}" required oninvalid="this.setCustomValidity('Poštanski broj za dostavu obavezan!')" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label  class="text-white" for="city">Grad</label>
-                                        <input type="text" class="form-control" id="city" name="city" value="{{ auth()->user()->city }}">
+                                        <input type="text" class="form-control" id="city" name="city" value="{{ auth()->user()->city }}" required oninvalid="this.setCustomValidity('Grad za dostavu obavezan!')" oninput="setCustomValidity('')">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="text-white" for="phone">Telefon</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" value="{{ auth()->user()->phone }}">
+                                    <input type="text" class="form-control" id="phone" name="phone" value="{{ auth()->user()->phone }}" required oninvalid="this.setCustomValidity('Vaš broj telefona obavezan!')" oninput="setCustomValidity('')">
                                 </div>
                             </div>
                         </div>
@@ -201,7 +228,7 @@
         </div>
     </div>
 </div>
-
+@endif
 <!-- Your existing script -->
 <script>
     $(document).ready(function () {

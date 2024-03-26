@@ -6,6 +6,7 @@ use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Product; 
 use App\Models\Order; 
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -92,46 +93,64 @@ class CartController extends Controller
     }
 
     public function placeOrder(Request $request)
-    {
+    {  
         // Retrieve the form data from the request
         $formData = $request->all();
+    
+        // Check if the user is logged in
+        if (auth()->check()) {
+            // If the user is logged in, use their information from the authenticated user
+            $userId = auth()->user()->id;
+            $name = auth()->user()->name;
+            $address = auth()->user()->address;
+            $city = auth()->user()->city;
+            $postalCode = auth()->user()->zip;
+            $phone = auth()->user()->phone;
+        } else {
 
-        // Assuming you have the authenticated user, you can get the user ID like this:
-        $userId = auth()->user()->id;
-
+            // If the user is not logged in, use the information provided in the form
+            $userId = null; // You may choose to handle anonymous orders differently, such as assigning a guest user ID
+            $name = $formData['name'];
+            $address = $formData['address'];
+            $city = $formData['city'];
+            $postalCode = $formData['postal_code'];
+            $phone = $formData['phone'];
+        }
+    
         // Extract the products data from the session
         $cartItems = session()->get('cart', []);
-
+    
         // Calculate subtotal, shipping cost, and total
         $subtotal = 0;
         foreach ($cartItems as $productId => $item) {
             $product = Product::find($productId);
             $subtotal += $product->price * $item['quantity'];
         }
-        $shippingCost = 7.00;
+        $shippingCost = 9.00;
         $total = $subtotal + $shippingCost;
-
+    
         // Create the order record in the database
         $order = Order::create([
             'user_id' => $userId,
-            'name' => auth()->user()->name, // Assuming you have a name field in the user model
-            'address' => auth()->user()->address, // Assuming you have an address field in the user model
-            'city' => auth()->user()->city, // Assuming you have a city field in the user model
-            'postal_code' => auth()->user()->zip, // Assuming you have a postal_code field in the user model
-            'phone' => auth()->user()->phone, // Assuming you have a phone field in the user model
+            'name' => $name,
+            'address' => $address,
+            'city' => $city,
+            'postal_code' => $postalCode,
+            'phone' => $phone,
             'subtotal' => $subtotal,
             'shipping_cost' => $shippingCost,
             'total' => $total,
             'newsletter' => true, // Assuming you have a checkbox for newsletter and it's checked by default
             'products' => $cartItems,
         ]);
-
+    
         // Clear the cart after placing the order
         session()->forget('cart');
-
+    
         // Redirect to a thank you page or order confirmation page
         return redirect()->route('cart.confirm');
     }
+    
 
     public function confirm()
     {   

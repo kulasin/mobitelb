@@ -22,7 +22,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 						<div class="form-group">
-                        <input id="name" type="text" placeholder="Unesite puno ime i prezime*" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input id="name" type="text" placeholder="Unesite puno ime i prezime*" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus oninvalid="this.setCustomValidity('Ime i prezime je obavezno!')" oninput="setCustomValidity('')">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
                                 @enderror
 						</div>
 						<div class="form-group">
-                        <input id="email" type="email" placeholder="Unesite email (kasnije se ne može mijenjati)*" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input id="email" type="email" placeholder="Unesite email (kasnije se ne može mijenjati)*" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" oninvalid="this.setCustomValidity('Email nije validan (nema znak @) ili je prazan!')" oninput="setCustomValidity('')">
 
 @error('email')
     <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
 @enderror
 						</div>
                         <div class="form-group">
-                        <input id="password" type="password" placeholder="Unesite password*" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        <input id="password" type="password" placeholder="Unesite password*" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"  oninvalid="this.setCustomValidity('Password je obavezan!')" oninput="setCustomValidity('')">
 
 @error('password')
     <span class="invalid-feedback" role="alert">
@@ -49,13 +49,13 @@
 @enderror
 						</div>
                         <div class="form-group">
-                        <input id="password-confirm" placeholder="Ponovite password*" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <input id="password-confirm" placeholder="Ponovite password*" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"  oninvalid="this.setCustomValidity('Ponovljeni password je obavezan!')" oninput="setCustomValidity('')">
 						</div>
 						<hr>
 				
 						<div class="private box">
                         <div class="form-group">
-    <input id="address" type="text" placeholder="Unesite punu adresu*" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+    <input id="address" type="text" placeholder="Unesite punu adresu*" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus  oninvalid="this.setCustomValidity('Adresa za dostavu obavezna!')" oninput="setCustomValidity('')">
     @error('address')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
 <div class="row no-gutters">
     <div class="col-6 pr-1">
         <div class="form-group">
-            <input id="city" type="text" placeholder="Grad*" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
+            <input id="city" type="text" placeholder="Grad*" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus oninvalid="this.setCustomValidity('Grad za dostavu obavezan!')" oninput="setCustomValidity('')">
             @error('city')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
     </div>
     <div class="col-6 pl-1">
         <div class="form-group">
-            <input id="zip" type="text" placeholder="Poštanski broj*" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" required autocomplete="zip">
+            <input id="zip" type="text" placeholder="Poštanski broj*" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" required autocomplete="zip" autofocus oninvalid="this.setCustomValidity('Poštanski broj za dostavu obavezan!')" oninput="setCustomValidity('')">
             @error('zip')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -87,7 +87,7 @@
 </div>
 
 <div class="form-group">
-    <input id="phone" type="text" placeholder="Broj telefona*" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+    <input id="phone" type="text" placeholder="Broj telefona*" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus oninvalid="this.setCustomValidity('Vaš broj telefona je obavezan!')" oninput="setCustomValidity('')">
     @error('phone')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

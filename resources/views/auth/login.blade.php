@@ -22,7 +22,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 						<div class="form-group">
-                            <input id="email" placeholder="Unesite Vaš email*" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" placeholder="Unesite Vaš email*" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"  autofocus required oninvalid="this.setCustomValidity('Email nije validan (nema znak @) ili je prazan!')" oninput="setCustomValidity('')">
                             @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                                 @enderror
 						</div>
 						<div class="form-group">
-                        <input id="password" placeholder="Unesite Vaš password*" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <input id="password" placeholder="Unesite Vaš password*" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" oninvalid="this.setCustomValidity('Passowrd je obavezan!')" oninput="setCustomValidity('')">
 							
                         @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -48,11 +48,11 @@
 							</div>
                         
                            
-							<div class="float-end"> @if (Route::has('password.request'))
+							<!-- <div class="float-end"> @if (Route::has('password.request'))
                                     <a id="forgot" >
                                         Zaboravljeni password?
                                     </a>
-                                @endif</div>
+                                @endif</div> -->
 						</div>
 						<div class="text-center"><input type="submit" value="Logirajte se" class="btn_1 full-width"></div>
                         <div class="divider" style="margin:30px 0 22px 0"><span class="text-white">ili</span></div>
