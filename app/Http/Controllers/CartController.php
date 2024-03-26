@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product; 
 use App\Models\Order; 
 use Illuminate\Support\Facades\Validator;
+use App\Mail\OrderPlaced;
 
 class CartController extends Controller
 {
@@ -87,7 +88,7 @@ class CartController extends Controller
             $subtotal += $product->price * $cartItems[$product->id]['quantity'];
         }
     
-        $total = $subtotal + 9.00; // Assuming shipping is always 7.00 KM
+        $total = $subtotal + 9.00; 
     
         return view('cart.checkout', compact('cartproducts', 'categories', 'cartItems', 'subtotal', 'total'));
     }
@@ -107,9 +108,8 @@ class CartController extends Controller
             $postalCode = auth()->user()->zip;
             $phone = auth()->user()->phone;
         } else {
-
             // If the user is not logged in, use the information provided in the form
-            $userId = null; // You may choose to handle anonymous orders differently, such as assigning a guest user ID
+            $userId = null;
             $name = $formData['name'];
             $address = $formData['address'];
             $city = $formData['city'];
@@ -140,9 +140,12 @@ class CartController extends Controller
             'subtotal' => $subtotal,
             'shipping_cost' => $shippingCost,
             'total' => $total,
-            'newsletter' => true, // Assuming you have a checkbox for newsletter and it's checked by default
+            'newsletter' => true,
             'products' => $cartItems,
         ]);
+    
+        // Send email notification using your Mailable class
+        Mail::to('kulasinn@gmail.com')->send(new OrderPlaced($order));
     
         // Clear the cart after placing the order
         session()->forget('cart');
@@ -151,7 +154,6 @@ class CartController extends Controller
         return redirect()->route('cart.confirm');
     }
     
-
     public function confirm()
     {   
         return view('cart.confirm');
