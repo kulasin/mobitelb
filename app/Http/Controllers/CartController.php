@@ -146,7 +146,7 @@ class CartController extends Controller
         ]);
     
         // Send email notification using your Mailable class
-        Mail::to('kulasinn@gmail.com')->send(new OrderPlaced($order));
+        Mail::to('mobitelba.7@gmail.com')->send(new OrderPlaced($order));
     
         // Clear the cart after placing the order
         session()->forget('cart');
