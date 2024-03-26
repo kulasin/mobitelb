@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product; 
 use App\Models\Order; 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderPlaced;
 
 class CartController extends Controller
