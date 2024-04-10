@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
-use App\Models\Product; 
-use App\Models\Order; 
+use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderPlaced;
+use App\Mail\OrderPlaced as OrderPlacedMail;
+use App\Events\OrderPlaced as OrderPlacedEvent;
+use Illuminate\Support\Facades\Log;
+
 
 class CartController extends Controller
 {
@@ -95,9 +98,12 @@ class CartController extends Controller
     }
 
     public function placeOrder(Request $request)
-    {  
+    {
         // Retrieve the form data from the request
         $formData = $request->all();
+
+        Log::info('Request URI: ' . $request->fullUrl());
+
     
         // Check if the user is logged in
         if (auth()->check()) {
@@ -145,8 +151,12 @@ class CartController extends Controller
             'products' => $cartItems,
         ]);
     
-        // Send email notification using your Mailable class
-        Mail::to('mobitelba.7@gmail.com')->send(new OrderPlaced($order));
+        // Broadcast the order data for real-time notification
+
+        broadcast(new OrderPlacedEvent($order->toArray()))->toOthers();
+    
+        // Send email notification using your Mailable class (optional)
+        Mail::to('kulasinn@gmail.com')->send(new OrderPlacedMail($order));
     
         // Clear the cart after placing the order
         session()->forget('cart');

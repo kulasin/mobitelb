@@ -1,0 +1,6 @@
+{
+  "entries": {
+    "index": "src/index.html",
+    "app": "/resources/js/app.js"
+  }
+}

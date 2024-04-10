@@ -82,6 +82,19 @@
 
 </head>
  <style>
+
+    /* Add this CSS to style the real-time notifications */
+.realtime-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
 	.note-editable, .note-resizebar { background-color: black !important;  }
 
 	
@@ -593,8 +606,8 @@
 
 
 	
-	<!-- COMMON SCRIPTS -->
-    
+
+
     <script src="{{ asset('/resources/js/main.js') }}"></script>
 	
 	
@@ -602,7 +615,8 @@
 	<script src="{{ asset('/resources/js/carousel-home.js') }}"></script>
 	<script src="{{ asset('/resources/js/jquery.cookiebar.js') }}"></script>
 	<script src="{{ url('/resources/js/carousel_with_thumbs.js') }}"></script>
-	
+   
+
 	<script>
 		$(document).ready(function() {
 			'use strict';
@@ -877,7 +891,59 @@ if (backgroundColor.trim() !== 'rgb(255, 255, 255)') {
         $("[data-toggle='switch']").bootstrapSwitch();
     });
 </script>
+<!-- Import Laravel Echo -->
+<!-- Import Pusher JS -->
 
+<script src="{{ asset('node_modules/pusher-js/dist/web/pusher.js') }}"></script>
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.11.3/echo.min.js"></script>
+<script type="module">
+    // Initialize Pusher
+    console.log('Initializing Pusher...');
+    const pusher = new Pusher('ece2b4e0295437035db1', {
+        cluster: 'eu',
+        encrypted: true
+    });
+    console.log('Pusher initialized successfully.');
+
+    // Configure Laravel Echo without creating an Echo instance
+    window.Pusher = pusher;
+    window.Echo = {
+        // Configure the Pusher options directly
+        options: {
+            broadcaster: 'pusher',
+            key: 'ece2b4e0295437035db1',
+            cluster: 'eu',
+            encrypted: true,
+            wsHost: window.location.hostname,
+            wsPort: 6001,
+            disableStats: true,
+        },
+        // Subscribe to a private channel and handle events directly
+        subscribeToChannel: function(channelName, callback) {
+            const channel = pusher.subscribe(channelName);
+            channel.bind('App\\Events\\OrderPlaced', callback); // Replace with your event name
+            console.log('Subscribed to channel:', channelName);
+        },
+        // Log the connector
+        connector: pusher
+    };
+
+    // Subscribe to 'admin-channel' privately and handle the event directly
+    window.Echo.subscribeToChannel('admin-channel', function(e) {
+        // Display a notification in the footer when an order is placed
+        const notification = document.createElement('div');
+        notification.className = 'realtime-notification';
+        notification.innerText = 'Nova Narudžba od: ' + e.order.name + ' - Iznos: ' + e.order.total+ ' KM';
+        console.log('Nova Narudžba od:', e.order.name, '- Iznos:', e.order.total, 'KM');
+        // Append the notification to the footer
+        document.querySelector('footer').appendChild(notification);
+    });
+
+    // Log initialization and setup
+    console.log('Connector set to Pusher:', window.Echo.connector);
+    console.log('Echo configured successfully.');
+    console.log('Pusher and Echo initialized successfully.');
+</script>
 
 
 
