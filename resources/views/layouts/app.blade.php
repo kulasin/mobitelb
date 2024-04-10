@@ -104,6 +104,14 @@
     font-weight: 700;
 }
 
+.feat ul li {
+  width: 33.0%;
+  border-right: 1px solid #dddddd;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
 	.note-editable, .note-resizebar { background-color: black !important;  }
 
 	
