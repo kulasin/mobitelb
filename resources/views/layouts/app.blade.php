@@ -944,8 +944,8 @@ if (backgroundColor.trim() !== 'rgb(255, 255, 255)') {
     console.log('Echo configured successfully.');
     console.log('Pusher and Echo initialized successfully.');
 </script>
-
-
+ 
+ 
 
 </body>
 </html>
