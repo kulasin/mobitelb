@@ -86,13 +86,22 @@
     /* Add this CSS to style the real-time notifications */
 .realtime-notification {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
     background-color: #28a745;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
-    z-index: 9999;
+    z-index: 99999999;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 	.note-editable, .note-resizebar { background-color: black !important;  }
@@ -896,7 +905,10 @@ if (backgroundColor.trim() !== 'rgb(255, 255, 255)') {
 
 <script src="{{ asset('node_modules/pusher-js/dist/web/pusher.js') }}"></script>
 <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.11.3/echo.min.js"></script>
-<script type="module">
+
+@auth
+        @if(auth()->user()->role === 'admin')
+        <script type="module">
     // Initialize Pusher
     console.log('Initializing Pusher...');
     const pusher = new Pusher('ece2b4e0295437035db1', {
@@ -930,13 +942,26 @@ if (backgroundColor.trim() !== 'rgb(255, 255, 255)') {
 
     // Subscribe to 'admin-channel' privately and handle the event directly
     window.Echo.subscribeToChannel('admin-channel', function(e) {
-        // Display a notification in the footer when an order is placed
         const notification = document.createElement('div');
-        notification.className = 'realtime-notification';
-        notification.innerText = 'Nova Narudžba od: ' + e.order.name + ' - Iznos: ' + e.order.total+ ' KM';
-        console.log('Nova Narudžba od:', e.order.name, '- Iznos:', e.order.total, 'KM');
+notification.className = 'realtime-notification';
+notification.innerText = 'Nova Narudžba od: ' + e.order.name + ' - Iznos: ' + e.order.total + ' KM';
+console.log('Nova Narudžba od:', e.order.name, '- Iznos:', e.order.total, 'KM');
+
+// Create the close button
+const closeButton = document.createElement('span');
+closeButton.className = 'close-btn';
+closeButton.innerText = 'x';
+
+// Append the close button to the notification div
+notification.appendChild(closeButton);
+
+// Add event listener to close the notification when the close button is clicked
+closeButton.addEventListener('click', function() {
+    notification.remove(); // Remove the notification from the DOM
+});
+
         // Append the notification to the footer
-        document.querySelector('footer').appendChild(notification);
+        document.querySelector('header').appendChild(notification);
     });
 
     // Log initialization and setup
@@ -944,7 +969,8 @@ if (backgroundColor.trim() !== 'rgb(255, 255, 255)') {
     console.log('Echo configured successfully.');
     console.log('Pusher and Echo initialized successfully.');
 </script>
- 
+        @endif
+    @endauth
  
 
 </body>
