@@ -62,6 +62,16 @@ class ProductController extends Controller
         return view('user.categories', compact('categories'));
     }
     
+
+    
+    public function subcategory()
+    {
+
+        $subcategories = Subcategories::with('category')->get();
+
+    
+        return view('user.subcategories', compact('subcategories'));
+    }
     public function filter(Request $request)
     {
         // Fetch all categories from the Categories model along with their subcategories
@@ -248,6 +258,67 @@ public function destroyCategory($id)
     // Redirect or respond as needed
     return redirect()->route('categories')->with('success', 'Kategorija uspješno obrisana!');
 }
+
+
+public function CreateSubcategory()
+{
+    $categories = Categories::all(); // Fetch all categories from the database
+    // You may need to fetch additional data or perform other actions here based on your requirements.
+
+    return view('user.create-subcategory', compact('categories'));
+}
+
+public function StoreSubcategory(Request $request)
+{
+    // Store the subcategory in the database
+    $subcategory = new Subcategories();
+    $subcategory->subcategory_name = $request->input('name');
+    $subcategory->category_id = $request->input('category'); // Assuming you have a category_id field in your form
+
+    $subcategory->save();
+
+    session()->flash('success', 'Podkategorija uspješno dodana');
+
+    // Assuming the route name is 'user.products'
+    return redirect()->route('subcategories');
+}
+
+public function editSubcategory($id)
+{
+    // Find the subcategory by its subcategory_id
+    $categories = Categories::all(); 
+    $subcategories = Subcategories::where('subcategory_id', $id)->first();
+
+    // You may need to fetch additional data or perform other actions here based on your requirements.
+
+    return view('user.edit-subcategory', compact('categories','subcategories'));
+}
+
+public function updateSubcategory(Request $request, $id)
+{
+    // Find the subcategory by its subcategory_id
+    $subcategory = Subcategories::where('subcategory_id', $id)->first();
+
+    // Update the subcategory attributes
+    $subcategory->update([
+        'subcategory_name' => $request->input('name'),
+        'category_id' => $request->input('category'),
+        // Update other attributes as needed
+    ]);
+
+    // Redirect or return a response as needed
+    return redirect()->route('subcategories')->with('success', 'Podkategorija uspješno izmijenjena!');
+}
+
+public function destroySubcategory($id)
+{
+    // Find the subcategory by ID and delete it
+    Subcategories::destroy($id);
+
+    // Redirect or respond as needed
+    return redirect()->route('subcategories')->with('success', 'Podkategorija uspješno obrisana!');
+}
+
 
     
     public function store(Request $request)

@@ -458,7 +458,7 @@
 
 											</li>
                                             <li>
-											<a href="{{ route('categories') }}"><i class="ti-angle-right"></i>Podkategorije</a>
+											<a href="{{ route('subcategories') }}"><i class="ti-angle-right"></i>Podkategorije</a>
 
 											</li>
 

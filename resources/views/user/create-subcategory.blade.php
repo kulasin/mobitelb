@@ -1,62 +1,59 @@
-<!-- resources/views/user/edit_category.blade.php -->
+<!-- resources/views/admin/add_product.blade.php -->
 
 @extends('layouts.app')
 
 @section('content')
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-<div class="container margin_30">
-    <div class="page_header">
-        <div class="breadcrumbs">
-            <ul>
-                <li><a href="{{ route('home') }}">Početna stranica</a></li>
-                <li><a href="{{ route('categories') }}">Sve kategorije</a></li>
-                <li>Uredi kategoriju</li>
-            </ul>
+    <div class="container margin_30">
+        <div class="page_header">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{{ route('home') }}">Početna stranica</a></li> 
+                    <li>Admin Panel</li>
+                    <li>Dodaj podkategoriju</li>
+                </ul>
+            </div>
+            <h1>Dodaj novu podkategoriju</h1>
         </div>
-        <h1>Uredi kategoriju</h1>
-    </div>
-    <!-- /page_header -->
-
-    <form action="{{ route('user.update-category', ['id' => $category->category_id]) }}" method="post" enctype="multipart/form-data">
+        <!-- /page_header -->
+        <form action="{{ route('user.store-subcategory') }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
-
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="step first">
-                        <h3>1. Informacije o kategoriji</h3>
+                        <h3>1. Informacije o podkategoriji</h3>
                         <div class="tab-content checkout">
                             <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                                 <div class="form-group">
-                                    <label for="name">Naziv kategorije</label>
-                                    <input type="text" class="form-control" value="{{ $category->category_name }}" id="name" name="name" required>
+                                    <label for="name">Naziv podkategorije</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
+                                <div class="form-group">
+                                    
                                
-</div>
+                                <label for="category">Kategorija</label>
+  <select class="form-control" name="category" id="category"  required>
+    <?php
+    // Assume $categories is an array fetched from your database
+    foreach ($categories as $category) {
+      echo "<option  id='{$category['category_id']}' value='{$category['category_id']}'>{$category['category_name']}</option>";
+    }
+    ?>
+  </select>
+  </div>
+  
 
-</div>
-
-
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn_1" style="width:100%">Spasi izmjene</button>
+                        <button type="submit" class="btn_1" style="width:100%">Dodaj podkategoriju</button>
                     </div>
                 </div>
             </div>
-
         </form>
-</div>
-<!-- /container -->
-@endsection
-
-@section('scripts')
-
+    </div>
+    <!-- /container -->
 @endsection
 <style>
     body {
@@ -130,7 +127,6 @@
 .ck-editor__editable  {background:black!important;}
 
 .ck-powered-by {display:none;}
+
 .upload__img-close {display:none;}
 </style>
-
-

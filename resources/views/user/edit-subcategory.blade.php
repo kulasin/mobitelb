@@ -1,4 +1,4 @@
-<!-- resources/views/user/edit_category.blade.php -->
+<!-- resources/views/user/edit_product.blade.php -->
 
 @extends('layouts.app')
 
@@ -13,31 +13,39 @@
         <div class="breadcrumbs">
             <ul>
                 <li><a href="{{ route('home') }}">Početna stranica</a></li>
-                <li><a href="{{ route('categories') }}">Sve kategorije</a></li>
-                <li>Uredi kategoriju</li>
+                <li><a href="{{ route('subcategories') }}">Sve podkategorije</a></li>
+                <li>Uredi podkategoriju</li>
             </ul>
         </div>
-        <h1>Uredi kategoriju</h1>
+        <h1>Uredi podkategoriju</h1>
     </div>
     <!-- /page_header -->
 
-    <form action="{{ route('user.update-category', ['id' => $category->category_id]) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('user.update-subcategory', ['id' => $subcategories->subcategory_id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="step first">
-                        <h3>1. Informacije o kategoriji</h3>
+                        <h3>1. Informacije o podkategoriji</h3>
                         <div class="tab-content checkout">
                             <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                                 <div class="form-group">
-                                    <label for="name">Naziv kategorije</label>
-                                    <input type="text" class="form-control" value="{{ $category->category_name }}" id="name" name="name" required>
+                                    <label for="name">Naziv podkategorije</label>
+                                    <input type="text" class="form-control" value="{{ $subcategories->subcategory_name }}" id="name" name="name" required>
                                 </div>
-                               
-</div>
-
+                                <div class="form-group">
+    <label for="category">Kategorija</label>
+    <select class="form-control" name="category" id="category" required>
+        <?php
+        // Assume $categories is an array fetched from your database
+        foreach ($categories as $category) {
+            $selectedCategory = ($category['category_id'] == $subcategories->category_id) ? 'selected' : '';
+            echo "<option id='{$category['category_id']}' value='{$category['category_id']}' $selectedCategory>{$category['category_name']}</option>";
+        }
+        ?>
+    </select>
 </div>
 
 
@@ -57,6 +65,36 @@
 
 @section('scripts')
 
+<script>
+    // Assume $categories and $subcategories are arrays fetched from your database
+    const categories = <?php echo json_encode($categories); ?>;
+    const subcategories = <?php echo json_encode($subcategories); ?>;
+
+    function updateSubcategories() {
+        // Get the selected category
+        const categorySelect = document.getElementById('category');
+        const selectedCategory = categorySelect.value;
+
+        // Get the subcategory select element
+        const subcategorySelect = document.getElementById('subcategory');
+
+        // Clear existing options
+        subcategorySelect.innerHTML = '';
+
+        // Add new options based on the selected category
+        subcategories.forEach(subcategory => {
+            if (subcategory.category_id == selectedCategory) {
+                const option = document.createElement('option');
+                option.value = subcategory.subcategory_name;
+                option.textContent = subcategory.subcategory_name;
+                subcategorySelect.appendChild(option);
+            }
+        });
+    }
+
+    // Initial call to populate subcategories based on the default category
+    updateSubcategories();
+</script>
 @endsection
 <style>
     body {

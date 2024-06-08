@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/products', [ProductController::class, 'products'])->name('products');
     Route::get('/categories', [ProductController::class, 'category'])->name('categories');
-    Route::get('/subcategories', [ProductController::class, 'products'])->name('subcategories');
+    Route::get('/subcategories', [ProductController::class, 'subcategory'])->name('subcategories');
     Route::get('/brandovi', [ProductController::class, 'products'])->name('brandovi');
 
     // Create a new product (show form and handle form submission)
@@ -78,6 +78,13 @@ Route::post('/product/category/store', [ProductController::class, 'StoreCategory
 Route::get('/product/category/{id}/edit', [ProductController::class, 'EditCategory'])->name('user.edit-category');
 Route::put('/product/category/{id}/update', [ProductController::class, 'UpdateCategory'])->name('user.update-category');
 Route::delete('/products/category/{id}', [ProductController::class, 'DestroyCategory'])->name('user.delete-category');
+
+Route::get('/product/subcategory/create', [ProductController::class, 'CreateSubcategory'])->name('user.create-subcategory');
+Route::post('/product/subcategory/store', [ProductController::class, 'StoreSubcategory'])->name('user.store-subcategory');
+Route::get('/product/subcategory/{id}/edit', [ProductController::class, 'EditSubcategory'])->name('user.edit-subcategory');
+Route::put('/product/subcategory/{id}/update', [ProductController::class, 'UpdateSubcategory'])->name('user.update-subcategory');
+Route::delete('/products/subcategory/{id}', [ProductController::class, 'DestroySubcategory'])->name('user.delete-subcategory');
+
     
 
     
