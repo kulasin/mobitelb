@@ -20,11 +20,11 @@ class HomeController extends Controller
 
         $products = Product::take(12)->get();
 
-        $mobiteli = Product::where('category', 'Mobiteli')->take(8)->get();
+        $mobiteli = Product::where('category', 'Mobiteli i oprema')->take(8)->get();
 
-        $laptopi = Product::where('category', 'Laptopi')->take(8)->get();
+        $laptopi = Product::where('category', 'IT & Gaming')->take(8)->get();
 
-        $tableti = Product::where('category', 'Tableti')->take(8)->get();
+        $tableti = Product::where('category', 'Tableti i oprema')->take(8)->get();
 
         // Get last blog posts
         $lastBlogPosts = BlogPost::latest()->take(3)->get();
