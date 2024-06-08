@@ -18,7 +18,7 @@ class ProductController extends Controller
         
 
 
-        $products = Product::paginate(12)->onEachSide(1);
+        $products = Product::orderBy('id', 'desc')->paginate(12)->onEachSide(1);
         $categories = Categories::with('subcategories')->get();
         $selectedCategories = [];
         $selectedSubcategories = []; // New array to hold selected subcategories
@@ -50,6 +50,16 @@ class ProductController extends Controller
         $selectedSort = request()->input('sort');
     
         return view('user.products', compact('products', 'categories', 'selectedCategories', 'selectedSubcategories', 'selectedColors', 'selectedBrands', 'selectedSaleActive', 'selectedStartPrice', 'selectedEndPrice', 'selectedSort'));
+    }
+
+
+    public function category()
+    {
+
+        $categories = Categories::all();
+
+    
+        return view('user.categories', compact('categories'));
     }
     
     public function filter(Request $request)
@@ -175,6 +185,70 @@ $products->appends($paginationData);
     
         return view('user.create', compact('categories', 'subcategories'));
     }
+
+
+    public function CreateCategory()
+    {
+        $categories = Categories::all(); // Fetch all categories from the database
+        $subcategories = Subcategories::all(); // Fetch all subcategories from the database
+        // You may need to fetch additional data or perform other actions here based on your requirements.
+    
+        return view('user.create-category', compact('categories', 'subcategories'));
+    }
+
+
+    public function StoreCategory(Request $request)
+    {
+        // Store the product in the database
+        $category = new Categories();
+        $category->category_name = $request->input('name');
+  
+        $category->save();
+
+    
+    session()->flash('success', 'Kategorija uspješno dodana');
+
+    // Assuming the route name is 'user.products'
+    return redirect()->route('categories');
+    }
+
+    public function editCategory($id)
+    {
+        // Find the category by its category_id
+        $category = Categories::where('category_id', $id)->first();
+
+    
+        // You may need to fetch additional data or perform other actions here based on your requirements.
+    
+        return view('user.edit-category', compact('category'));
+    }
+    
+
+    public function updateCategory(Request $request, $id)
+    {
+        // Find the category by its category_id
+        $category = Categories::where('category_id', $id)->first();
+    
+        // Update the category attributes
+        $category->update([
+            'category_name' => $request->input('name'),
+            // Update other attributes as needed
+        ]);
+    
+        // Redirect or return a response as needed
+        return redirect()->route('categories')->with('success', 'Kategorija uspješno izmijenjena!');
+    }
+    
+
+public function destroyCategory($id)
+{
+    // Find the category by ID and delete it
+    Categories::destroy($id);
+
+    // Redirect or respond as needed
+    return redirect()->route('categories')->with('success', 'Kategorija uspješno obrisana!');
+}
+
     
     public function store(Request $request)
     {

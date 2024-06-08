@@ -452,6 +452,20 @@
 											<a href="{{ route('products') }}"><i class="ti-mobile"></i>Moji proizvodi</a>
 
 											</li>
+
+                                            <li>
+											<a href="{{ route('categories') }}"><i class="ti-angle-right"></i>Kategorije</a>
+
+											</li>
+                                            <li>
+											<a href="{{ route('categories') }}"><i class="ti-angle-right"></i>Podkategorije</a>
+
+											</li>
+
+                                            <li>
+											<a href="{{ route('categories') }}"><i class="ti-angle-right"></i>Brandovi</a>
+
+											</li>
         @endif
     @endauth
 										
