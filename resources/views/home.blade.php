@@ -318,7 +318,6 @@
 						
 					</div>
 					<!-- /grid_item -->
-					 test
 				</div>
         @endforeach
 			</div>
