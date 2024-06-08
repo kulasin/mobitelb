@@ -209,7 +209,7 @@
 					<img src="{{ asset('/resources/img/front/mobiteli.jpg') }}" data-src="{{ asset('/resources/img/front/mobiteli.jpg') }}" alt="" class="lazy">
 					<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
 						<h3>MOBITELI</h3>
-						<p>{{ $categories->firstWhere('category_name', 'Mobiteli')->products->count() }} Proizvoda</p>	
+						<p>{{ $categories->firstWhere('category_name', 'Mobiteli i oprema')->products->count() }} Proizvoda</p>	
 						<div>
 						<span class="btn_1">POGLEDAJ</span></div>
 					</div>
@@ -231,7 +231,7 @@
 				<img src="{{ asset('/resources/img/front/tableti.jpg') }}" data-src="{{ asset('/resources/img/front/tableti.jpg') }}" alt="" class="lazy">
 					<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
 						<h3>TABLETI</h3>
-						<p>{{ $categories->firstWhere('category_name', 'Tableti')->products->count() }} Proizvoda</p>	
+						<p>{{ $categories->firstWhere('category_name', 'Tableti i oprema')->products->count() }} Proizvoda</p>	
 						<div><span class="btn_1">POGLEDAJ</span></div>
 					</div>
 				</a>
@@ -326,41 +326,41 @@
         <div class="container margin_60_35">
 			<div class="row small-gutters categories_grid">
 				<div class="col-sm-12 col-md-6">
-				<a href="{{ route('products.filter', ['category[]' => 'Oprema za računare']) }}">
+				<a href="{{ route('products.filter', ['category[]' => 'IT & Gaming']) }}">
 						<img src="{{ asset('/resources/img/front/pc.webp') }}" data-src="{{ asset('/resources/img/front/pc.webp') }}" alt="" class="img-fluid lazy loaded mob-up  cat-slika" data-was-processed="true"  style="max-width: 125%">
 						<div class="wrapper">
 							<h2>Gaming oprema i konzole</h2>
-							<p>{{ $categories->firstWhere('category_name', 'Oprema za računare')->products->count() }} Proizvoda</p>
+							<p>{{ $categories->firstWhere('category_name', 'IT & Gaming')->products->count() }} Proizvoda</p>
 						</div>
 					</a>
 				</div>
 				<div class="col-sm-12 col-md-6">
 					<div class="row small-gutters mt-md-0 mt-sm-2">
 						<div class="col-sm-6">
-							<a href="{{ route('products.filter', ['category[]' => 'Oprema za mobitele']) }}">
+							<a href="{{ route('products.filter', ['category[]' => 'Bluetooth zvučnici i slušalice ']) }}">
 								<img src="{{ asset('/resources/img/front/zvucnici2.jpg') }}" data-src="{{ asset('/resources/img/front/zvucnici2.jpg') }}" alt="" class="img-fluid lazy loaded cat-slika" data-was-processed="true">
 								<div class="wrapper">
 									<h2>Bluetooth zvučnici</h2>
-									<p>{{ $categories->firstWhere('category_name', 'Oprema za mobitele')->products->count() }} Proizvoda</p>
+									<p>{{ $categories->firstWhere('category_name', 'Bluetooth zvučnici i slušalice ')->products->count() }} Proizvoda</p>
 								</div>
 							</a>
 						</div>
 						<div class="col-sm-6">
-							<a href="{{ route('products.filter', ['category[]' => 'Oprema za mobitele']) }}">
+							<a href="{{ route('products.filter', ['category[]' => 'Bluetooth zvučnici i slušalice ']) }}">
 								<img src="{{ asset('/resources/img/front/slusalice0.jpg') }}" data-src="{{ asset('/resources/img/front/slusalice0.jpg') }}" alt="" class="img-fluid lazy loaded  cat-slika" data-was-processed="true">
 								<div class="wrapper">
 									<h2>Slušalice</h2>
-									<p>{{ $categories->firstWhere('category_name', 'Oprema za mobitele')->products->count() }} Proizvoda</p>
+									<p>{{ $categories->firstWhere('category_name', 'Bluetooth zvučnici i slušalice ')->products->count() }} Proizvoda</p>
 								</div>
                               
 							</a>
 						</div>
 						<div class="col-sm-12 mt-sm-2">
-							<a href="{{ route('products.filter', ['category[]' => 'Mrežna oprema']) }}">
+							<a href="{{ route('products.filter', ['category[]' => 'TV & Audio']) }}">
 								<img src="{{ asset('/resources/img/front/ruteri2.jpg') }}" data-src="{{ asset('/resources/img/front/ruteri2.jpg') }}" alt="" class="img-fluid lazy loaded cat-slika" data-was-processed="true" style="max-width: 150%">
 								  <div class="wrapper">
 									<h2>Mrežna oprema</h2>
-									<p>{{ $categories->firstWhere('category_name', 'Mrežna oprema')->products->count() }} Proizvoda</p>
+									<p>{{ $categories->firstWhere('category_name', 'TV & Audio')->products->count() }} Proizvoda</p>
 								</div>
 							</a>
 						</div>
@@ -382,7 +382,7 @@
 									<span class="new_price">već od 19.88 KM</span><br>
 									<span class="old_price">35.00 KM</span>
 								</div>
-								<a class="btn_1" href="{{ route('products.filter', ['subcategory[]' => 'Narukvice']) }}" role="button">POGLEDAJ</a>
+								<a class="btn_1" href="{{ route('products.filter', ['subcategory[]' => 'Pametni satovi']) }}" role="button">POGLEDAJ</a>
 							</div>
 						</div>
 					</div>
