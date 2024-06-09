@@ -82,56 +82,16 @@
 
 
                                 <div class="form-group">
-    <label for="brand">Brand</label>
-    <select class="form-control" id="brand" name="brand" onchange="updateSubcategories()" required>
-        <option value="apple">Apple</option>
-        <option value="samsung">Samsung</option>
-        <option value="xiaomi">Xiaomi</option>
-        <option value="google">Google</option>
-        <option value="ps">Playstation</option>
-        <option value="lenovo">Lenovo</option>
-        <option value="razer">Razer</option>
-        <option value="honor">Honor</option>
-        <option value="inkax">Inkax</option>
-        <option value="homtom">HomTom</option>
-        <option value="digicell">Digicell</option>
-        <option value="ipro">iPro</option>
-        <option value="ldnio">Ldnio</option>
-        <option value="imilab">Imilab</option>
-        <option value="rockymile">Rockymile</option>
-        <option value="bigben">Bigben</option>
-        <option value="hp">HP</option>
-        <option value="gateway">Gateway</option>
-        <option value="microsoft">Microsoft</option>
-        <option value="mercusys">Mercusys</option>
-        <option value="esperanza">Esperanza</option>
-        <option value="borg">Borg</option>
-        <option value="genius">Genius</option>
-        <option value="logitech">Logitech</option>
-        <option value="xo">XO</option>
-        <option value="tp_link">Tp link</option>
-        <option value="logilink">LogiLink</option>
-        <option value="hoco">Hoco</option>
-        <option value="spigen">SPIGEN</option>
-        <option value="celebrat">Celebrat</option>
-        <option value="haylou">Haylou</option>
-        <option value="struke">Struke</option>
-        <option value="uag">UAG</option>
-        <option value="jbl">JBL</option>
-        <option value="karl_lagerlfield">Karl Lagerlfield</option>
-        <option value="panasonic">Panasonic</option>
-        <option value="guess">Guess</option>
-        <option value="redragon">Redragon</option>
-        <option value="cubot">Cubot</option>
-        <option value="allcall">AllCall</option>
-          <option value="Sony">Sony</option>
-    <option value="Nokia">Nokia</option>
-    <option value="DJI">DJI</option>
-    <option value="FUJIFILM">FUJIFILM</option>
-    <option value="Nintendo">Nintendo</option>
-    <option value="Garmin">Garmin</option>
-        <option value="ostalo">Ostalo</option>
-    </select>
+                                <label for="brand">Brand</label>
+  <select class="form-control" name="brand" id="brand"  required>
+    <?php
+    // Assume $categories is an array fetched from your database
+    foreach ($brands as $brand) {
+      echo "<option  id='{$brand['id']}' value='{$brand['name']}'>{$brand['name']}</option>";
+    }
+    ?>
+  </select>
+    
 </div>
 
                                 <div class="form-group">

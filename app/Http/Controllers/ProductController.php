@@ -204,9 +204,9 @@ $products->appends($paginationData);
     {
         $categories = Categories::all(); // Fetch all categories from the database
         $subcategories = Subcategories::all(); // Fetch all subcategories from the database
-        // You may need to fetch additional data or perform other actions here based on your requirements.
+        $brands = Brands::all();
     
-        return view('user.create', compact('categories', 'subcategories'));
+        return view('user.create', compact('categories', 'subcategories','brands'));
     }
 
 
@@ -214,9 +214,9 @@ $products->appends($paginationData);
     {
         $categories = Categories::all(); // Fetch all categories from the database
         $subcategories = Subcategories::all(); // Fetch all subcategories from the database
-        // You may need to fetch additional data or perform other actions here based on your requirements.
+        
     
-        return view('user.create-category', compact('categories', 'subcategories'));
+        return view('user.create-category', compact('categories', 'subcategories',));
     }
 
 
