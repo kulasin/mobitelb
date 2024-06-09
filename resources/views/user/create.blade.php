@@ -87,7 +87,7 @@
     <?php
     // Assume $categories is an array fetched from your database
     foreach ($brands as $brand) {
-      echo "<option  id='{$brand['id']}' value='{$brand['name']}'>{$brand['name']}</option>";
+        echo "<option id='{$brand['id']}' value='{$brand['name']}'>" . ucfirst($brand['name']) . "</option>";
     }
     ?>
   </select>

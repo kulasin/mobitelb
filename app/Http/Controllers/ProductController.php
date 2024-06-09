@@ -21,6 +21,7 @@ class ProductController extends Controller
 
         $products = Product::orderBy('id', 'desc')->paginate(12)->onEachSide(1);
         $categories = Categories::with('subcategories')->get();
+        $brands = Brands::all();
         $selectedCategories = [];
         $selectedSubcategories = []; // New array to hold selected subcategories
         $selectedColors = [];
@@ -30,7 +31,7 @@ class ProductController extends Controller
         $selectedEndPrice = request()->input('end_price');
         $selectedSort = request()->input('sort');
     
-        return view('grid', compact('products', 'categories', 'selectedCategories', 'selectedSubcategories', 'selectedColors', 'selectedBrands', 'selectedSaleActive', 'selectedStartPrice', 'selectedEndPrice', 'selectedSort'));
+        return view('grid', compact('products', 'categories','brands', 'selectedCategories', 'selectedSubcategories', 'selectedColors', 'selectedBrands', 'selectedSaleActive', 'selectedStartPrice', 'selectedEndPrice', 'selectedSort'));
     }
 
     
@@ -89,6 +90,7 @@ class ProductController extends Controller
     {
         // Fetch all categories from the Categories model along with their subcategories
         $categories = Categories::with('subcategories')->get();
+        $brands = Brands::all();
       
         // Retrieve filter parameters from the request
         $selectedCategories = $request->input('category', []);
@@ -170,7 +172,7 @@ class ProductController extends Controller
 $products->appends($paginationData);
 
 
-        return view('grid', compact('products', 'categories', 'selectedCategories', 'selectedSubcategories', 'selectedColors', 'selectedBrands', 'selectedSaleActive', 'selectedStartPrice', 'selectedEndPrice', 'selectedSort', 'searchTerm'));
+        return view('grid', compact('products', 'categories','brands', 'selectedCategories', 'selectedSubcategories', 'selectedColors', 'selectedBrands', 'selectedSaleActive', 'selectedStartPrice', 'selectedEndPrice', 'selectedSort', 'searchTerm'));
     }
 
     
@@ -410,8 +412,9 @@ public function destroySubcategory($id)
 
     // Fetch subcategories (assuming they have a foreign key relationship with categories)
     $subcategories = Subcategories::all();
+    $brands = Brands::all();
     // Add any additional data needed for the form
-    return view('user.edit', compact('product', 'categories', 'subcategories'));
+    return view('user.edit', compact('product', 'categories', 'subcategories', 'brands'));
 }
 
 public function update(Request $request, $id)

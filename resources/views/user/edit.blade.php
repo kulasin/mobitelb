@@ -113,59 +113,12 @@
     <label for="brand">Brend</label>
     <select class="form-control" id="brand" name="brand" required>
         <?php
-        $brandTranslations = [
-            'apple' => 'Apple',
-            'samsung' => 'Samsung',
-            'xiaomi' => 'Xiaomi',
-            'google' => 'Google',
-            'ps' => 'Playstation',
-            'lenovo' => 'Lenovo',
-            'razer' => 'Razer',
-            'honor' => 'Honor',
-            'inkax' => 'Inkax',
-            'homtom' => 'HomTom',
-            'digicell' => 'Digicell',
-            'ipro' => 'iPro',
-            'ldnio' => 'Ldnio',
-            'imilab' => 'Imilab',
-            'rockymile' => 'Rockymile',
-            'bigben' => 'Bigben',
-            'hp' => 'HP',
-            'gateway' => 'Gateway',
-            'microsoft' => 'Microsoft',
-            'mercusys' => 'Mercusys',
-            'esperanza' => 'Esperanza',
-            'borg' => 'Borg',
-            'genius' => 'Genius',
-            'logitech' => 'Logitech',
-            'xo' => 'XO',
-            'tp_link' => 'Tp link',
-            'logilink' => 'LogiLink',
-            'hoco' => 'Hoco',
-            'spigen' => 'SPIGEN',
-            'celebrat' => 'Celebrat',
-            'haylou' => 'Haylou',
-            'struke' => 'Struke',
-            'uag' => 'UAG',
-            'jbl' => 'JBL',
-            'karl_lagerlfield' => 'Karl Lagerlfield',
-            'panasonic' => 'Panasonic',
-            'guess' => 'Guess',
-            'redragod' => 'Redragod',
-            'cubot' => 'Cubot',
-            'Sony' => 'Sony',
-            'Nokia' => 'Nokia',
-            'DJI' => 'DJI',
-            'FUJIFILM' => 'FUJIFILM',
-            'Nintendo' => 'Nintendo',
-             'Garmin' => 'Garmin',
-              'Ostalo' => 'Ostalo',
-        ];
-
-        foreach ($brandTranslations as $brandValue => $brandTranslation) {
-            $selected = ($brandValue === $product->brand) ? 'selected' : '';
-            echo "<option value=\"$brandValue\" $selected>$brandTranslation</option>";
-        }
+      
+      foreach ($brands as $brand) {
+        $selectedBrand = ($brand['name'] == $product->brand) ? 'selected' : '';
+        echo "<option id='{$brand['id']}' value='{$brand['name']}' $selectedBrand>" . ucfirst($brand['name']) . "</option>";
+    }
+    
         ?>
     </select>
 </div>
