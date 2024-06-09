@@ -282,6 +282,45 @@
         @endif
     @endforeach
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function () {
+    var url = window.location.href;
+    var regex = /\/product\/\d+\/edit$/;
+    if (regex.test(url)) {
+        $('.upload__img-wrap').sortable({
+            update: function (event, ui) {
+                // Get the new order of images as a comma-separated string
+                var newOrder = $('.upload__img-wrap .img-bg').map(function() {
+                    return $(this).data('file');
+                }).get().join(',');
+                console.log('New Order:', newOrder); // Log the new order to the console
+                
+                // Generate the URL for the reorder-images route
+                var url = "{{ route('reorder-images', ['id' => $product->id]) }}";
+                console.log('URL:', url); // Log the URL to the console
+
+                // Send the new order to the server to update the database
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: { 
+                        order: newOrder,
+                        _token: '{{ csrf_token() }}' // Include the CSRF token
+                    },
+                    success: function (response) {
+                        console.log('Image order updated successfully');
+                    },
+                    error: function () {
+                        console.log('Error updating image order');
+                    }
+                });
+            }
+        });
+    }
+});
+</script>
 <script>
     $(document).ready(function () {
         $('.delete-image-btn').on('click', function () {
@@ -439,6 +478,10 @@
 
 .ck-powered-by {display:none;}
 .upload__img-close {display:none;}
+
+.img-bg {cursor: pointer;}
+
 </style>
+
 
 
