@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+              
                     <div class="text-center">
                         <button type="submit" class="btn_1" style="width:100%">Dodaj podkategoriju</button>
                     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Categories;
 use App\Models\Subcategories;
+use App\Models\Brands;
 use Illuminate\Support\Facades\DB;
 
 
@@ -61,6 +62,18 @@ class ProductController extends Controller
     
         return view('user.categories', compact('categories'));
     }
+
+
+    
+    public function brands()
+    {
+
+        $brands = Brands::all();
+
+    
+        return view('user.brands', compact('brands'));
+    }
+    
     
 
     
@@ -456,7 +469,26 @@ public function update(Request $request, $id)
 }
 
 
+public function ReorderImages(Request $request, $id)
+{
+    // Find the product by ID
+    $product = Product::findOrFail($id);
 
+    // Retrieve the new order of images
+    $newOrder = $request->input('order');
+
+    // Convert the string to an array
+    $newOrderArray = explode(',', $newOrder);
+
+    // Update the order of images
+    $product->images = implode(',', $newOrderArray);
+
+    // Save the changes to the product
+    $product->save();
+
+    // Return a success response
+    return response()->json(['message' => 'Image order updated successfully']);
+}
 
 public function deleteImage(Request $request)
 {
@@ -516,6 +548,82 @@ public function destroy($id)
     return redirect()->route('products')->with('success', 'Proizvod uspješno obrisan!');
 }
 
+
+public function CreateBrand()
+{
+    $brands = Brands::all();
+    return view('user.create-brand', compact('brands'));
+}
+
+public function StoreBrand(Request $request)
+{
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    // Store the brand in the database
+    $brand = new Brands();
+    $brand->name = $request->input('name');
+
+    $imagePath = 'resources/img/brands';
+    $imageName = $request->input('name') . '.' . $request->file('image')->extension();
+    $request->file('image')->move(base_path('resources/img/brands'), $imageName);
+    $brand->image = $imagePath . '/' . $imageName;
+
+    $brand->save();
+
+    session()->flash('success', 'Brand uspješno dodan');
+
+    return redirect()->route('brands');
+}
+
+public function EditBrand($id)
+{
+    $brand = Brands::find($id);
+    return view('user.edit-brand', compact('brand'));
+}
+
+public function UpdateBrand(Request $request, $id)
+{
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    // Find the brand by its id
+    $brand = Brands::find($id);
+
+    // Update the brand attributes
+    $brand->name = $request->input('name');
+
+    if ($request->hasFile('image')) {
+        // Delete the old image if exists
+        // Store the new image
+        $imagePath = 'resources/img/brands';
+        $imageName = $request->input('name') . '.' . $request->file('image')->extension();
+        $request->file('image')->move(base_path('resources/img/brands'), $imageName);
+        $brand->image = $imagePath . '/' . $imageName;
+    }
+
+    $brand->save();
+
+    return redirect()->route('brands')->with('success', 'Brand uspješno izmijenjen!');
+}
+
+public function DestroyBrand($id)
+{
+    // Find the brand by ID and delete it
+    $brand = Brands::find($id);
+
+    // Delete the image if exists
+
+    $brand->delete();
+
+    return redirect()->route('brands')->with('success', 'Brand uspešno izbrisan!');
+}
 
    
 }

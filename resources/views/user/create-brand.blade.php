@@ -1,62 +1,58 @@
-<!-- resources/views/user/edit_category.blade.php -->
+<!-- resources/views/admin/add_product.blade.php -->
 
 @extends('layouts.app')
 
 @section('content')
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-<div class="container margin_30">
-    <div class="page_header">
-        <div class="breadcrumbs">
-            <ul>
-                <li><a href="{{ route('home') }}">Početna stranica</a></li>
-                <li><a href="{{ route('categories') }}">Sve kategorije</a></li>
-                <li>Uredi kategoriju</li>
-            </ul>
+    <div class="container margin_30">
+        <div class="page_header">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{{ route('home') }}">Početna stranica</a></li> 
+                    <li>Admin Panel</li>
+                    <li>Dodaj brand</li>
+                </ul>
+            </div>
+            <h1>Dodaj novi brand</h1>
         </div>
-        <h1>Uredi kategoriju</h1>
-    </div>
-    <!-- /page_header -->
-
-    <form action="{{ route('user.update-category', ['id' => $category->category_id]) }}" method="post" enctype="multipart/form-data">
+        <!-- /page_header -->
+        <form action="{{ route('user.store-brand') }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
-
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="step first">
-                        <h3>1. Informacije o kategoriji</h3>
+                        <h3>1. Informacije o brandu</h3>
                         <div class="tab-content checkout">
                             <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                                 <div class="form-group">
-                                    <label for="name">Naziv kategorije</label>
-                                    <input type="text" class="form-control" value="{{ $category->category_name }}" id="name" name="name" required>
+                                    <label for="name">Naziv branda</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                
+<div class="form-group">
+                                    <label for="images">Galerija</label>
+            <br>
+    <div class="upload__box">
+    <div class="upload__btn-box">
+        <label class="upload__btn">
+           Dodaj sliku branda
+            <input type="file"  data-max_length="20" class="upload__inputfile" id="imageUpload" name="image">
+        </label>
+    </div>
+    <div class="upload__img-wrap"></div>
 </div>
 
-</div>
-
-
+                                </div>
                             </div>
-                 
-                
+                        </div>
+                    </div>
                     <div class="text-center">
-                        <button type="submit" class="btn_1" style="width:100%">Spasi izmjene</button>
+                        <button type="submit" class="btn_1" style="width:100%">Dodaj brand</button>
                     </div>
                 </div>
             </div>
-
         </form>
-</div>
-<!-- /container -->
-@endsection
-
-@section('scripts')
-
+    </div>
+    <!-- /container -->
 @endsection
 <style>
     body {
@@ -130,7 +126,6 @@
 .ck-editor__editable  {background:black!important;}
 
 .ck-powered-by {display:none;}
+
 .upload__img-close {display:none;}
 </style>
-
-

@@ -1,4 +1,4 @@
-<!-- resources/views/user/edit_category.blade.php -->
+<!-- resources/views/user/edit_brand.blade.php -->
 
 @extends('layouts.app')
 
@@ -13,37 +13,56 @@
         <div class="breadcrumbs">
             <ul>
                 <li><a href="{{ route('home') }}">Početna stranica</a></li>
-                <li><a href="{{ route('categories') }}">Sve kategorije</a></li>
-                <li>Uredi kategoriju</li>
+                <li><a href="{{ route('brands') }}">Svi brandovi</a></li>
+                <li>Uredi brand</li>
             </ul>
         </div>
-        <h1>Uredi kategoriju</h1>
+        <h1>Uredi brand</h1>
     </div>
     <!-- /page_header -->
 
-    <form action="{{ route('user.update-category', ['id' => $category->category_id]) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('user.update-brand', ['id' => $brand->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="step first">
-                        <h3>1. Informacije o kategoriji</h3>
+                        <h3>1. Informacije o brandu</h3>
                         <div class="tab-content checkout">
                             <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                                 <div class="form-group">
-                                    <label for="name">Naziv kategorije</label>
-                                    <input type="text" class="form-control" value="{{ $category->category_name }}" id="name" name="name" required>
+                                    <label for="name">Naziv branda</label>
+                                    <input type="text" class="form-control" value="{{ $brand->name }}" id="name" name="name" required>
                                 </div>
                                
+
+ <div class="form-group">
+    <label for="images">Galerija</label>
+    <br>
+    <div class="upload__box">
+    <div class="upload__btn-box">
+        <label class="upload__btn">
+            Izmijeni sliku branda
+            <input type="file" class="upload__inputfile" id="imageUpload" name="image">
+        </label>
+    </div>
+    <div class="upload__img-wrap">
+    <div class="upload__img-box">
+ 
+        <div style="background-image: url('{{ asset($brand->image) }}')" data-file="{{ $brand->image }}" class="img-bg">
+        </div>
+    </div>
+</div>
+
 </div>
 
 </div>
 
 
                             </div>
-                 
-                
+                        </div>
+                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn_1" style="width:100%">Spasi izmjene</button>
                     </div>
